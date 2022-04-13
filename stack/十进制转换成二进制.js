@@ -9,7 +9,6 @@ const dec2bin = (dec) => {
   while (stack.length) {
     res += stack.pop();
   }
-
   return res;
 };
 
