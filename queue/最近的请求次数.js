@@ -2,7 +2,8 @@ var RecentCounter = function () {
   this.q = [];
 };
 
-
+// 时间复杂度 O(n) n为剔出老请求的长度
+// 空间复杂度 O(n) n为最近请求的次数
 RecentCounter.prototype.ping = function (t) {
   if (!t) return null
   this.q.push(t);

@@ -1,3 +1,7 @@
+
+
+// 时间复杂度O(n) n为s的length
+// 空间复杂度O(n) n也是为s的length
 const isValid = (s) => {
   if (s.length % 2 === 1) return false;
   let stack = [];
