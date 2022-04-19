@@ -30,7 +30,7 @@ const tree = {
   ],
 }
 
-// 深度优先遍历
+// 广度优先遍历
 const bfs = (tree) => {
   const q = [tree];
 
