@@ -15,7 +15,7 @@ const dec2bin = (dec) => {
     stack.push(dec % 2);
 
     // 除以2
-    dec = Math.floor(dec / 2);
+    dec = dec >> 1;
   }
 
   // 取出栈中的数字
@@ -23,8 +23,8 @@ const dec2bin = (dec) => {
     res += stack.pop();
   }
 
-  返回这个字符串
+  // 返回这个字符串
   return res;
 };
 
-console.log(dec2bin(254));
+console.log(dec2bin(256));

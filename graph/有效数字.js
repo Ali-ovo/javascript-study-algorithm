@@ -1,17 +1,19 @@
+// 生成数字图 只有状态为 3 5 6的时候才为一个数字
+const graph = {
+  0: { 'blank': 0, 'sign': 1, ".": 2, "digit": 6 },
+  1: { "digit": 6, ".": 2 },
+  2: { "digit": 3 },
+  3: { "digit": 3, "e": 4 },
+  4: { "digit": 5, "sign": 7 },
+  5: { "digit": 5 },
+  6: { "digit": 6, ".": 3, "e": 4 },
+  7: { "digit": 5 },
+}
+
 
 // 时间复杂度 O(n) n是字符串长度
 // 空间复杂度 O(1) 
 var isNumber = function (s) {
-  const graph = {
-    0: { 'blank': 0, 'sign': 1, ".": 2, "digit": 6 },
-    1: { "digit": 6, ".": 2 },
-    2: { "digit": 3 },
-    3: { "digit": 3, "e": 4 },
-    4: { "digit": 5, "sign": 7 },
-    5: { "digit": 5 },
-    6: { "digit": 6, ".": 3, "e": 4 },
-    7: { "digit": 5 },
-  }
 
   // 记录状态
   let state = 0;
@@ -28,7 +30,6 @@ var isNumber = function (s) {
     } else if (c === "E" || c === "e") {
       c = "e";
     }
-
 
     // 开始寻找图
     state = graph[state][c];

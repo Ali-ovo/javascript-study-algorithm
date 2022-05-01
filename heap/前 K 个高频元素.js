@@ -23,7 +23,8 @@ class MinHeap {
   getRightIndex(i) {
     return (i << 1) + 2;
   }
-
+  
+ // 改造上移和下移操作即可
   shiftUp(index) {
     if (index == 0) return;
     const parentIndex = this.getParentIndex(index);
@@ -32,7 +33,6 @@ class MinHeap {
       this.shiftUp(parentIndex);
     }
   }
-
   shiftDown(index) {
     const leftIndex = this.getLeftIndex(index);
     const rightIndex = this.getRightIndex(index);
@@ -47,7 +47,7 @@ class MinHeap {
       this.shiftDown(rightIndex)
     }
   }
-
+  
   insert(value) {
     this.heap.push(value);
     this.shiftUp(this.heap.length - 1)
@@ -68,17 +68,28 @@ class MinHeap {
 
 }
 
+// nums = [1,1,1,2,2,3], k = 2
+// 输出: [1,2]
 
-// 时间复杂度 O(nlogk)
+
+// 时间复杂度 O(n * logK)
 // 空间复杂度 O(k)
 var topKFrequent = function (nums, k) {
+  // 统计每个元素出现的频率
   const map = new Map();
+
+  // 遍历数组 建立映射关系
   nums.forEach(n => {
     map.set(n, map.has(n) ? map.get(n) + 1 : 1);
   })
 
+  // 建立最小堆
   const h = new MinHeap();
+
+  // 遍历映射关系
   map.forEach((value, key) => {
+
+    // 由于插入的元素结构发生了变化，所以需要对 最小堆的类进行改造一下 改造的方法我会写到最后
     h.insert({ value, key })
     if (h.size() > k) {
       h.pop()
