@@ -32,7 +32,7 @@ const tree = {
 
 // 深度优先遍历
 const dfs = (tree) => {
-  console.log(tree.val);
+  console.log(tree.val); 
   tree.children.forEach(dfs)
 };
 
